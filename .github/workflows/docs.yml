@@ -21,5 +21,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs-material
 
+      - name: Set up Git credentials
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force
