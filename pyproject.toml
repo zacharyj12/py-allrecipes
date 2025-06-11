@@ -1,10 +1,10 @@
 [project]
 name = "py-allrecipes"
 version = "0.1.0"
-description = "Add your description here"
+description = "Python API to access the Allrecipes platform."
 readme = "README.md"
 authors = [
-    { name = "Zachary Jones", email = "145171712+zacharyj12@users.noreply.github.com" }
+    { name = "Zachary Jones", email = "zacharyj@orbical.dev" }
 ]
 requires-python = ">=3.12"
 dependencies = [
