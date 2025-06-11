@@ -23,7 +23,7 @@ print(recipe['details'])
 ```
 
 ## Documentation
-See the [full documentation](docs/index.md) for more details and usage examples.
+See the [full documentation](https://zacharyj12.github.io/py-allrecipes/) for more details and usage examples.
 
 ## License
 MIT
