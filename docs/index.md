@@ -1,17 +1,26 @@
-# Welcome to MkDocs
+# Welcome to Py Allrecipes documentation
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Py Allrecipes is a Python package for searching and extracting recipes from Allrecipes.com.
 
-## Commands
+## What can you do?
+- **Search recipes** by keyword and get structured results (title, url, ratings)
+- **Extract full recipe details**: ingredients, steps (grouped logically), prep/cook/total time, servings, and yield
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Example Usage
+```python
+import py_allrecipes
+results = py_allrecipes.search_recipes('chocolate cake')
+url = results[0]['url']
+recipe = py_allrecipes.get_recipe(url)
+print(recipe['title'])
+print(recipe['ingredients'])
+print(recipe['steps'])
+print(recipe['details'])
+```
 
-## Project layout
+## More Information
+- See the [Search & Recipe API](search.md) for full API documentation and usage notes.
+- Robust to changes in Allrecipes layout, with fallbacks for older markup.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+
+
