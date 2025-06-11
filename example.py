@@ -1,4 +1,7 @@
 
 import py_allrecipes
 
-print(py_allrecipes.search_recipes("chocolate cake"))
+url = py_allrecipes.search_recipes('chocolate cake')[1]['url']
+recipe = py_allrecipes.get_recipe(url)
+
+print(recipe)
