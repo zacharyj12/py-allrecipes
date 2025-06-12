@@ -28,7 +28,8 @@ def get_recipe(url: str) -> dict:
         ingredients = []
         # New: Use the modern Allrecipes class for the ingredient list
         for li in soup.select(".mm-recipes-structured-ingredients__list-item"):
-            txt = li.get_text(strip=True)
+            # Use a space separator to preserve spacing between quantity/unit/name
+            txt = li.get_text(" ", strip=True)
             if txt:
                 ingredients.append(txt)
 

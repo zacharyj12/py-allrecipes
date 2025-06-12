@@ -24,7 +24,11 @@ class TestPyAllrecipes(unittest.TestCase):
         # Mock HTML response for recipe
         html = """<html><body>
         <h1>Test Cake</h1>
-        <ul><li class="mm-recipes-structured-ingredients__list-item">1 cup sugar</li></ul>
+        <ul>
+            <li class="mm-recipes-structured-ingredients__list-item">
+                <span>1</span> <span>cup</span> <span>sugar</span>
+            </li>
+        </ul>
         <ol class="comp mntl-sc-block mntl-sc-block-startgroup mntl-sc-block-group--OL">
             <li class="comp mntl-sc-block mntl-sc-block-startgroup mntl-sc-block-group--LI"><span>Step 1</span>Mix ingredients.</li>
             <li class="comp mntl-sc-block mntl-sc-block-startgroup mntl-sc-block-group--LI"><span>Step 2</span>Bake.</li>
@@ -42,6 +46,7 @@ class TestPyAllrecipes(unittest.TestCase):
         url = "https://www.allrecipes.com/recipe/12345/test-cake/"
         recipe = py_allrecipes.get_recipe(url)
         self.assertEqual(recipe["title"], "Test Cake")
+        # Check for correct ingredient formatting with spaces
         self.assertIn("1 cup sugar", recipe["ingredients"])
         self.assertEqual(len(recipe["steps"]), 3)
         self.assertIn("Mix ingredients.", recipe["steps"][0])
