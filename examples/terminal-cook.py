@@ -8,6 +8,7 @@ from py_allrecipes import search_recipes, get_recipe
 
 console = Console()
 
+
 def main():
     console.print("[bold green]Welcome to Terminal Cook![/bold green]")
     query = Prompt.ask("Enter a recipe search term")
@@ -29,20 +30,28 @@ def main():
         table.add_row(str(idx), recipe["title"], ratings)
     console.print(table)
 
-    choice = Prompt.ask("Select a recipe number to view", choices=[str(i) for i in range(1, min(11, len(recipes)+1))])
-    selected = recipes[int(choice)-1]
+    choice = Prompt.ask(
+        "Select a recipe number to view",
+        choices=[str(i) for i in range(1, min(11, len(recipes) + 1))],
+    )
+    selected = recipes[int(choice) - 1]
     try:
         details = get_recipe(selected["url"])
     except Exception as e:
         console.print(f"[red]Error fetching recipe details:[/red] {e}")
         sys.exit(1)
 
-    console.print(Panel(Text(details["title"], style="bold yellow"), title="Recipe Title"))
-    console.print(Panel("\n".join(details["ingredients"]), title="Ingredients", style="green"))
+    console.print(
+        Panel(Text(details["title"], style="bold yellow"), title="Recipe Title")
+    )
+    console.print(
+        Panel("\n".join(details["ingredients"]), title="Ingredients", style="green")
+    )
     console.print(Panel("\n".join(details["steps"]), title="Steps", style="blue"))
     info = details["details"]
-    info_text = f"Prep: {info.get('prep_time','-')} | Cook: {info.get('cook_time','-')} | Total: {info.get('total_time','-')} | Servings: {info.get('servings','-')} | Yield: {info.get('yield','-')}"
+    info_text = f"Prep: {info.get('prep_time', '-')} | Cook: {info.get('cook_time', '-')} | Total: {info.get('total_time', '-')} | Servings: {info.get('servings', '-')} | Yield: {info.get('yield', '-')}"
     console.print(Panel(info_text, title="Info", style="magenta"))
+
 
 if __name__ == "__main__":
     main()
