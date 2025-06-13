@@ -22,9 +22,6 @@ print(recipe['steps'])
 print(recipe['details'])
 ```
 
-## Example programs
-
-There are some example programs under the ```examples``` folder. You will have to run ```pip install rich``` to run most of the programs.
 ## Documentation
 See the [full documentation](https://zacharyj12.github.io/py-allrecipes/) for more details and usage examples.
 
